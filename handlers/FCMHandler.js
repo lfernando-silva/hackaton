@@ -1,6 +1,4 @@
 const axios = require('axios');
-const env = process.env.NODE_ENV || 'development';
-const configs = require(`../configs/${env}Configs.js`);
 
 module.exports = ({registration_ids, notification}) => {
     const fcmNotification = {
@@ -8,7 +6,7 @@ module.exports = ({registration_ids, notification}) => {
         notification: Object.assign(notification, {sound: 'default'}),
     }
     const headers = {
-        'Authorization': `key=${configs.serverKey}`
+        'Authorization': `key=${process.env.FCM_SERVER_KEY}`
     }
     return axios
         .post('https://fcm.googleapis.com/fcm/send', fcmNotification, {headers})

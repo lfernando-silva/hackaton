@@ -18,7 +18,7 @@ const {
 const app = express();
 
 dotenv.config({
-    path: `.env.${process.env.NODE_ENV}`
+    path: `.env.${process.env.NODE_ENV || 'development'}`
 });
 
 app.use(cors());
