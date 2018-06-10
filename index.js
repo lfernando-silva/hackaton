@@ -5,7 +5,8 @@ const express = require('express');
 const helmet = require('helmet');
 const methodOverride = require('method-override');
 const {
-    system
+    system,
+    events
 } = require('./routes');
 
 const {
@@ -31,6 +32,7 @@ app.use(envValidator);
 app.use(logger);
 
 app.use('/system', system);
+app.use('/events', events);
 
 app.use(errorHandler);
 app.use(notFoundHandler);
